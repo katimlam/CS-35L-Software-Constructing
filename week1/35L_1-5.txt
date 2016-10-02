@@ -1,0 +1,67 @@
+[lamk@lnxsrv01 ~]$ pwd
+/u/cs/ugrad/lamk
+
+[lamk@lnxsrv01 ~]$ ls
+#2#             Documents       lab3undef.c    pexex
+answer.txt      Downloads       lab3undef.s    pexex.tgz
+#arg2#          draft_pexex     lisp.h         smashinglab
+CFLAGS=-m32     hello-thread.c  nsdefault      smashinglab.tgz
+CS 35L 1-5.txt  lab3fwrap.c     openmplab      sthttpd-2.27.0
+data.c          lab3fwrap.s     openmplab.tgz  sthttpd-2.27.0.tar.gz
+datalab         lab3O2.c        openmplab.txt
+Desktop         lab3O2.s        perl5
+
+
+[lamk@lnxsrv01 ~/Documents]$ man man
+man(1)                                                                  man(1)
+
+NAME
+       man - format and display the on-line manual pages
+
+SYNOPSIS
+       man  [-acdDfFhkKtwW]  [--path] [-m system] [-p string] [-C config_file]
+       [-M pathlist] [-P pager] [-B browser] [-H htmlpager] [-S  section_list]
+       [section] name ...
+
+DESCRIPTION
+       man formats and displays the on-line manual pages.  If you specify sec-
+       tion, man only looks in that section of the manual.  name  is  normally
+       the  name of the manual page, which is typically the name of a command,
+       function, or file.  However, if name contains  a  slash  (/)  then  man
+       interprets  it  as a file specification, so that you can do man ./foo.5
+       or even man /cd/foo/bar.1.gz.
+
+       See below for a description of where man  looks  for  the  manual  page
+       files.
+
+MANUAL SECTIONS
+       The standard sections of the manual include:
+
+
+
+
+j k n shift+n
+
+ls -a
+ls -l
+
+
+three sets of permission
+r w x
+
+chmod +x filename
+chmod o-x filename
+chmod 700 filename
+chmod g+r filename
+
+echo adasf > file1
+cat file1 #adasf
+
+ln file1 linkF1
+
+rm file1 (delete)
+
+mv linkF1 file1
+
+ln -s file1 softlink
+

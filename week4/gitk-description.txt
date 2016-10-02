@@ -1,0 +1,10 @@
+In the top row,the first window list all the commits related to the directory.
+It shows the merges and branches. The second window shows the author for each
+commit. The thrid wondow shows the modified date of each commit.
+
+In the middle, the left window shows the detail of each commit.
+It shows the Parent, child, branches, and log message. 
+At the bottom-left corner, it shows the changes as similar in patch files.
+At the bottom rigt wondow, it shows which files have benn changed in this 
+commit.
+	

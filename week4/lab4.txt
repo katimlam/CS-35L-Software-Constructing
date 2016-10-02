@@ -1,0 +1,63 @@
+$ mkdir gitroot
+	create a directory
+
+$ cd gitroot
+	go into directory
+	
+$ git clone git://git.savannah.gnu.org/diffutils.git
+	get the copy of diffutils directory
+
+$ git log > ../git-log.txt
+
+$ git tag > ../git-tags.txt
+
+$ emacs ../git-log.txt
+	search: maint: quote 'like this' or "like this", not `like this'
+	find commit 62ca21c8c1a5aa3488589dcb191a4ef04ae9ed4f
+
+$ cd diffutils/
+
+$ git format-patch -1 62ca21c8c1a5aa3488589dcb191a4ef04ae9ed4f --stdout 
+> ~/CS35L/week4/quote-patch.txt
+	create a patch and stdout to a textfile
+
+$ git checkout v3.0
+
+$ patch -p1 < ~/CS35L/week4/quote-patch.txt
+
+$ git status
+	it shows a bunch of unstaged files and untracked files
+
+$ emacs file
+C-x v = C-x v u 
+revert changes
+
+10. go through .c.rej files and redo the patches
+
+$ git status
+$ git clean -n
+$ git clean -f
+	delete the untracked files
+
+$ git diff > quote-3.0-patch.txt
+
+$ ./configure
+$ make
+$ make check
+	configure and install the program
+
+$ ./src/diff . -
+$ ./src/diff --help
+	try diff function. The quotation is correct.
+
+$ mkdir diffutils-3.0-patch
+$ mkdir diffutils-3.0
+$ src/diff -pru diffutils-3.0 diffutils-3.0-patch > quote-3.0-test
+$ diff quote-patch.txt quote-3.0-patch.txt > sdf
+	create a diff file and compare the two files
+	Most of the difference is the ' and `
+	However, it is innocuous.
+
+
+
+

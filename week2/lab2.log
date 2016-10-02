@@ -1,0 +1,153 @@
+$ export LC_ALL='C'
+===============================================================================
+$ locale
+LANG=en_US.UTF-8
+LC_CTYPE="C"
+LC_NUMERIC="C"
+LC_TIME="C"
+LC_COLLATE="C"
+LC_MONETARY="C"
+LC_MESSAGES="C"
+LC_PAPER="C"
+LC_NAME="C"
+LC_ADDRESS="C"
+LC_TELEPHONE="C"
+LC_MEASUREMENT="C"
+LC_IDENTIFICATION="C"
+LC_ALL=C
+===============================================================================
+$ sort /usr/share/dict/words -o ./CS35L/week2/words
+===============================================================================
+$ wget "http://web.cs.ucla.edu/classes/winter16/cs35L/assign/assign2.htm
+l" > ./CS35L/week2/web.txt
+--2016-01-12 15:10:12--  http://web.cs.ucla.edu/classes/winter16/cs35L/assi
+gn/assign2.html
+Resolving web.cs.ucla.edu (web.cs.ucla.edu)... 131.179.128.22
+Connecting to web.cs.ucla.edu (web.cs.ucla.edu)|131.179.128.22|:80... conn
+ected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8668 (8.5K) [text/html]
+Saving to: 'assign2.html'
+
+100%[======================================>] 8,668       --.-K/s   in 0s
+
+2016-01-12 15:10:12 (165 MB/s) - 'assign2.html' saved [8668/8668]
+===============================================================================
+$ cp assign2.html ./CS35L/week2/web.txt
+===============================================================================
+$ tr -c 'A-Za-z' '[\n*]' < web.txt > output1.txt
+when there is non-alphabet character, turn it into newline.
+
+$ tr -cs 'A-Za-z' '[\n*]' < web.txt > output2.txt
+when there is non-alphabet character, turn it into newline, but this time,
+consecutive newline chracters become only one newline character.
+
+$ tr -cs 'A-Za-z' '[\n*]' < web.txt | sort > output3.txt
+when there is non-alphabet character, turn it into newline, but this time,
+consecutive newline chracters become only one newline character.
+The output is then sorted.
+
+$ tr -cs 'A-Za-z' '[\n*]' < web.txt | sort -u > output4.txt
+when there is non-alphabet character, turn it into newline, but this time,
+consecutive newline chracters become only one newline character.
+The output is then sorted in a way that repeated lines (or words) only 
+appear once.
+
+$ tr -cs 'A-Za-z' '[\n*]' < web.txt | sort -u | comm - words > output5.txt
+when there is non-alphabet character, turn it into newline, but this time,
+consecutive newline chracters become only one newline character.
+Then, it is sorted in a way that repeated lines (or words) only 
+appear once. 
+Comm: It ouputs the unique words in input file1, unique words in words,
+and words that are both in input file1 and words.
+
+$ tr -cs 'A-Za-z' '[\n*]' < web.txt | sort -u | comm -23 - words > output6.txt
+when there is non-alphabet character, turn it into newline, but this time,
+consecutive newline chracters become only one newline character.
+Then, it is sorted in a way that repeated lines only 
+appear once. 
+Comm: Since it supress option 2 and 3, it only output the lines that only 
+appear
+in file1 but not in words.
+===============================================================================
+
+$ wget "http://mauimapp.com/moolelo/hwnwdseng.htm"
+ get the html webpage of the hawaiian words and english words
+===============================================================================
+This is my buildwords script:
+
+#!/bin/bash
+First line
+
+sed '/<tr>/,/<\/td>/d' |
+ Remove everything between <tr> and </td>, even they are not in the same line.
+ This is aim at deleting the English words.
+
+tr '[:upper:]' '[:lower:]' |
+ Replace every uppercase with lowercase
+
+sed 's/<u>\(.\)<\/u>/\1/g' |
+ Delete <u> and </u>
+
+sed "s/\`/\'/g" |
+ Replace Hawaiian okina with '
+
+sed -n '/<td>/,/<\/td>/p' |
+ Keep the line with <td> and </td>
+
+sed '/<\/tr>/d' |
+ For unknown reason, there are lines with </tr> remaining. Delete them.
+
+sed 's/^\s*<td>\(.*\)<\/td>/\1/' |
+ Only keep the the content inside <td> and </td>
+
+sed 's/\s/</g' |
+ Replace space with <
+
+sed 's/,/</g' |
+ Replace , with <
+
+sed 's/</\n/g' |
+ Replace < with newline
+
+sed '/^\s*$/d' |
+ Remove all empty lines
+
+sed "/[pk\'mnwlhaeiou]/!d" |
+ Remove lines containing that have no Hawaiian chracters in it
+
+sort -u 
+ sort and remove repeated entries
+===============================================================================
+$ chmod +x buildwords
+ modified the permission to allow execution
+
+$ ./buildwords <hwnwdseng.htm >hwords
+ turn the English-to-Hawaiian webpage into Hawaii words entries
+
+$ wget http://web.cs.ucla.edu/classes/winter16/cs35L/assign/assign2.html
+ get the html webpage of the assignment2
+
+$ tr '[:upper:]' '[:lower:]' <assign2.html > assignmentwebpage.html
+ turn uppercase to lowercase in assign2.html and output to a new file
+
+$ tr -cs 'A-Za-z' '[\n*]' < assignmentwebpage.html | sort -u 
+| comm -23 - words | wc -l
+ There are 39 words in the html file that are not in 'words'. They are
+ misspelled English words.
+
+$ tr -cs 'A-Za-z' '[\n*]' < assignmentwebpage.html | sort -u 
+| comm -23 - hwords | wc -l
+ There are 406 words in the html file that are not in 'hwords'. They are
+ misspelled Hawaiian words.
+
+$ tr -cs 'A-Za-z' '[\n*]' < assignmentwebpage.html | sort -u 
+| comm -23 - words | comm -12 - hwords | wc -l
+ There are 3 words that are not in 'words' but are in 'hwords'. They are 
+ misspelled as English, but not as Hawaiian.
+
+$ tr -cs 'A-Za-z' '[\n*]' < assignmentwebpage.html | sort -u 
+| comm -23 - hwords | comm -12 - words | wc -l
+ There are 370 words that are not in 'words' but are in 'hwords'. They are 
+ misspelled as Hawaiian, but not as English.
+

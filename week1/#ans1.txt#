@@ -1,0 +1,70 @@
+CS 35L Lab 5 Ka Tim Lam 
+
+1.  
+This is shown in man man:
+man -k printf 
+           Search the short descriptions and manual page names for the keyword
+           printf  as  regular expression.  Print out any matches.  Equivalent
+           to apropos -r printf.
+That means typing "man -k something" can search something 
+
+
+2. 
+[lamk@lnxsrv09 ~]$ which cp
+/usr/local/cs/bin/cp
+[lamk@lnxsrv09 ~]$ which wc
+/usr/local/cs/bin/wc
+
+
+3. [lamk@lnxsrv09 /usr/bin]$ find -name  "?"
+.
+./X
+./w
+./[
+
+/usr/bin/X : 
+/usr/bin/w : displays  information  about the users currently on the machine, and their processes.
+/usr/bin/[ : is a symbolic link to /usr/bin/Xorg.  Xorg  is a full featured X server that was originally designed for UNIX
+and UNIX-like operating systems running on Intel x86 hardware. It now runs on a wider range of hardware and OS platforms.
+
+
+
+
+4.
+[lamk@lnxsrv09 ~]$ cd /usr/bin
+[lamk@lnxsrv09 /usr/bin]$ ls -l emacs
+lrwxrwxrwx 1 root root 23 Dec 22 11:36 emacs -> /etc/alternatives/emacs
+/usr/bin/emacs is a symbolic link to /etc/alternatives/emacs
+
+5.
+g+s: add permission to set group ID on execution
+o-x: remove owner execution permission
+
+6.
+[lamk@lnxsrv09 ~]$ find -mtime -21
+
+7.
+[lamk@lnxsrv09 ~]$ find / -type d -mtime -21 2> /dev/null
+
+8.
+find is located in the directory /usr/bin
+[lamk@lnxsrv09 /usr/bin]$ cd /usr/bin
+[lamk@lnxsrv09 /usr/bin]$ find . -type l | wc -l
+287
+
+9.
+[lamk@lnxsrv09 /usr/lib]$ ls -t -l
+-t sort the files in date modified order
+The oldest file is kbd, which last modified on Sep 29 2014.
+
+10.
+[lamk@lnxsrv09 ~]$ which locale
+/usr/bin/locale
+
+11.
+
+
+
+
+
+

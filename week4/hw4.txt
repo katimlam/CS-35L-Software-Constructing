@@ -1,0 +1,34 @@
+$ git checkout v3.0
+	checkout version 3.0
+
+$ git checkout -b quote
+	create a new branch quote
+	checkout quote
+
+$ patch -p1 < ~/CS35L/week4/quote-3.0-patch.txt
+	apply a patch to current commit
+
+$ emacs C-x 4 a
+	type in "I have applied quote-3.0-patch"
+
+$ git commit -a 
+	type in "I have applied quote-3.0-patch"
+
+$ git format-patch origin --stdout > ~/CS35L/week4/formatted-patch.txt
+	create the formatted-patch.txt file.
+
+$ git checkout v3.0
+$ git checkout -b partner
+	I get a patch from Kelvin
+	checkout 3.0 and create another branch partner
+	I found that we have different amount of modified files.
+	Other than that, things are fine. When I run ./src/diff, it has
+	correct behavior.
+	
+$ git am ../formatted-patch.txt
+$ make distdir
+	apply the patch to the new branch
+
+$ git clone git://git.savannah.gnu.org/emacs.git
+	get a copy of emacs directory
+

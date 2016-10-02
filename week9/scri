@@ -1,0 +1,36 @@
+#!/bin/bash
+
+export LC_ALL='C'
+cd /usr/bin
+ldd aplaymidi >> ~/CS35L/week9/commands.txt
+ldd bzr >> ~/CS35L/week9/commands.txt
+ldd config_data >> ~/CS35L/week9/commands.txt
+ldd db_upgrade >> ~/CS35L/week9/commands.txt
+ldd eject >> ~/CS35L/week9/commands.txt
+ldd firefox >> ~/CS35L/week9/commands.txt
+ldd gftodvi >> ~/CS35L/week9/commands.txt
+ldd gnomevfs-df >> ~/CS35L/week9/commands.txt
+ldd gthumb-importer >> ~/CS35L/week9/commands.txt
+ldd hpcdtoppm >> ~/CS35L/week9/commands.txt
+ldd iproxy >> ~/CS35L/week9/commands.txt
+ldd kdesvn-build >> ~/CS35L/week9/commands.txt
+ldd ksysguardd >> ~/CS35L/week9/commands.txt
+ldd lscpu >> ~/CS35L/week9/commands.txt
+ldd mkfontdir >> ~/CS35L/week9/commands.txt
+ldd nail >> ~/CS35L/week9/commands.txt
+ldd opreport >> ~/CS35L/week9/commands.txt
+ldd pango-querymodules-64 >> ~/CS35L/week9/commands.txt
+ldd pdfopt >> ~/CS35L/week9/commands.txt
+ldd pilot-read-notepad >> ~/CS35L/week9/commands.txt
+ldd pnmtosgi >> ~/CS35L/week9/commands.txt
+ldd proxy >> ~/CS35L/week9/commands.txt
+ldd raw2tiff >> ~/CS35L/week9/commands.txt
+ldd rpmdev-sha1 >> ~/CS35L/week9/commands.txt
+ldd setup >> ~/CS35L/week9/commands.txt
+ldd sprof >> ~/CS35L/week9/commands.txt
+ldd test-moniker >> ~/CS35L/week9/commands.txt
+ldd update-gdk-pixbuf-loaders >> ~/CS35L/week9/commands.txt
+ldd xclipboard >> ~/CS35L/week9/commands.txt
+ldd xzdec >> ~/CS35L/week9/commands.txt
+cat ~/CS35L/week9/commands.txt | sed 's/^\s*//g' | sed '/^n/d' | sort -u > ~/CS35L/week9/output.txt
+cd ~/CS35L/week9/

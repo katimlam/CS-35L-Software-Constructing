@@ -1,0 +1,41 @@
+$ wc -c bigfile.txt
+8876032 bigfile.txt
+	I created a file with over 5,000,000 characters.
+
+$ gcc -o tr2u tr2u.c
+$ gcc -o tr2b tr2b.c
+	compile the two versions of tr2 program.
+
+$ strace -c -o unbuffered_output_file.txt ./tr2u "" "" < bigfile.txt > outputu.txt
+	There are 17,752,088 system calls.
+
+$ strace -c -o buffered_output_file.txt ./tr2b "" "" < bigfile.txt > outputb.txt
+	There are 300 system calls.
+
+$ strace -c -o unbuffered_output_terminal.txt ./tr2u "" "" < bigfile.txt 
+	There are 17,752,088 system calls.
+
+$ strace -c -o buffered_output_terminal.txt ./tr2b "" "" < bigfile.txt 
+	There are 203,940 system calls.
+
+
+$ time ./tr2u "" "" < bigfile.txt > u.txt
+real    0m10.260s
+user    0m0.398s
+sys     0m9.717s
+
+$ time ./tr2b "" "" < bigfile.txt > b.txt
+real    0m0.347s
+user    0m0.151s
+sys     0m0.017s
+
+$ time ./tr2u "" "" < bigfile.txt 
+real    0m9.190s
+user    0m0.431s
+sys     0m8.639s
+
+$ time ./tr2b "" "" < bigfile.txt 
+real    0m1.981s
+user    0m0.224s
+sys     0m0.265s
+	

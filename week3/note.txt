@@ -1,0 +1,9 @@
+$ sudo apt-get install <program>
+mac: homebreu macports
+
+src INSTALL plogran
+README configure
+$ ./configure
+
+once you have Makefile
+$ make

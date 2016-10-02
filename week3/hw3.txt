@@ -1,0 +1,40 @@
+Q1. case_long_iso_time_style: is indicator for a potential goto statement in
+some other places in the program. Since I cannot find any goto statement 
+involving "case_long_iso_time_style:", it is fine to leave it there.
+
+============================================================================
+
+Q2. That will confuse the users and developers when they are transiting to 
+the new format from old format. Current software should be changed according 
+to the new format. Also, in some country, the date format is DD-MM-YY. 
+
+============================================================================
+
+Q3. When I command $ python randline.py /dev/null
+It outputs the following error message:
+Traceback (most recent call last):
+  File "randline.py", line 70, in <module>
+    main()
+  File "randline.py", line 64, in main
+    sys.stdout.write(generator.chooseline())
+  File "randline.py", line 34, in chooseline
+    return random.choice(self.lines)
+  File "/usr/local/cs/Python-2.7.10/lib/python2.7/random.py", line 275, in choic                                                                              e
+    return seq[int(self.random() * len(seq))]  # raises IndexError if seq is emp                                                                              ty
+IndexError: list index out of range
+
+The program is accessing a list with no element in it.
+
+============================================================================
+
+Q4.
+[lamk@lnxsrv09 ~/CS35L/week3]$ python3 randline.py hw3.txt
+  File "randline.py", line 65
+    except IOError as (errno, strerror):
+                      ^
+SyntaxError: invalid syntax
+
+The correct syntax for python3 should be 
+	except IOError as err:
+
+

@@ -1,0 +1,42 @@
+I tested the function using a big text file which contains about
+8,000,000 chars:
+
+$ time ./sfrobu < bigfile.txt | od -ta
+	real    0m10.155s
+	user    0m3.143s
+	sys     0m8.104s
+
+$ time ./sfrob < bigfile.txt | od -ta
+	real    0m7.533s
+	user    0m2.621s
+	sys     0m0.793s
+
+$ time ./sfrobs < bigfile.txt | od -ta
+	real    0m6.722s
+	user    0m1.857s
+	sys     0m0.850s
+
+My test shows that sfrobs has the best perfomance, sfrob comes second, 
+sfrobu comes last.
+sfrobs uses scripting language and pipeline programming without any 
+temporary variables. Therefore it is the fastest.
+sfrob uses library function putchar() and getchar() and has moderate
+performance.
+sfrobu uses syscall function read() and write() which lower the
+performance.
+
+ 
+
+In the second part, I manually create file with ten lines, then copy it ten
+times to 100, then to 1000 etc.
+
+lines        comparison
+10		23
+100		539
+1000		8540
+10000		117924
+100000		1489536
+1000000		18013584
+
+The relationship between lines and comparison has Big-O of 
+around n(log n) base 2.

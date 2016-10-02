@@ -1,0 +1,23 @@
+$ who
+$ who | wc -l   counts users |:previous output wc:word count -l: line
+
+put on top of the file 
+#!/bin/sh
+STRING="HELLO WORLD!!!"
+echo $STRING
+
+tr -d '\r' < dos-file.txt
+tr -d '\r' < dos-file.txt > unix-file.txt
+tr -d '\r' < dos-file.txt | sort > unix-file.txt
+
+echo first arg is $1
+
+rm a* star can be anything after a
+$ grep a* search a patter star:any number of a
+$ grep ^a*  only starts with a
+
+111-111-111 ===> 111111111
+sed 's/\([0-9]\{3\}\)-\([0-9]\{3\}\)-\([0-9]\{3\}\)/ \1\2\3/g' filename
+111-111.111 ===> 111111111
+sed 's/[]//g'
+

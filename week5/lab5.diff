@@ -1,0 +1,26 @@
+2016-02-04  Ka Tim Lam  <lamk@lnxsrv09.seas.ucla.edu>
+
+	* timespec.h: I made change to the function timespec_cmp() to make it
+	check for signed overflow. If overflow occurs, the sign of the
+	diff value is flipped.
+
+--- lib/timespec.h	2005-09-21 23:05:39.000000000 -0700
++++ lib/timespec_new.h	2016-02-03 19:54:57.000000000 -0800
+@@ -46,6 +46,10 @@
+ timespec_cmp (struct timespec a, struct timespec b)
+ {
+   int diff = a.tv_sec - b.tv_sec;
++  if ( diff < 0 && a.tv_sec > b.tv_sec) 
++     diff *= -1;
++  else if ( diff > 0 && a.tv_sec < b.tv_sec ) 
++     diff *= -1;
+   return diff ? diff : a.tv_nsec - b.tv_nsec;
+ }
+ 
+@@ -58,4 +62,4 @@
+ void gettime (struct timespec *);
+ int settime (struct timespec const *);
+ 
+-#endif
++#endif
+\ No newline at end of file

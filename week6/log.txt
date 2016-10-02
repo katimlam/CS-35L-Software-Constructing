@@ -1,0 +1,49 @@
+$ dpkg --get-selections | grep openssh 
+$ sudo apt-get install openssh-server
+$ sudo apt-get install openssh-client
+$ sudo apt-get update
+$ ssh-keygen
+	Generate public and private key pair
+
+===============================================================================
+
+$ sudo useradd -d /home/kelvinkuang -m kelvinkuang
+$ sudo passwd kelvinkuang
+	create an account for my partner
+
+$ cd /home/kelvinkuang
+$ sudo mkdir .ssh
+	create .ssh directory for my partner
+
+$ sudo chown -R kelvinkuang .ssh
+$ sudo chmod 700 .ssh
+	change permisssion on .ssh directory
+===============================================================================
+
+$ sudo useradd -d /home/tianhaozhao -m tianhaozhao
+$ sudo passwd tianhaozhao
+	create an account for my partner
+
+$ cd /home/tianhaozhao
+$ sudo mkdir .ssh
+	create .ssh directory for my partner
+
+$ sudo chown -R tianhaozhao .ssh
+$ sudo chmod 700 .ssh
+	change permisssion on .ssh directory
+
+===============================================================================
+
+$ ssh-copy-id -i tim@128.97.84.154
+$ ssh-add
+$ ssh tim@128.97.84.154
+$ ssh -X tim@128.97.84.154
+$ firefox
+
+===============================================================================
+ifconfig
+my ip address is 128.97.84.152  
+
+ping 128.97.84.154
+
+===============================================================================

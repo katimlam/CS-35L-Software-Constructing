@@ -1,0 +1,6 @@
+#include <stdio.h>
+
+int frobcmp(char const * a, char const * b)
+{
+
+}

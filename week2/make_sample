@@ -1,0 +1,13 @@
+#!/bin/bash
+mkdir dirfortest
+cd ./dirfortest
+echo "This is some text" > CS\ With\ Space.txt
+echo "this is att" > a\*t\*t.log
+echo "w" > .W
+echo "sdsd" > .Q
+echo "hi" > \-asdf
+echo "aaa" > test.txt
+cp test.txt copytest.txt
+ln -s .W symlkofW
+cd ..
+

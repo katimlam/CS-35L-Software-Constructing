@@ -1,0 +1,47 @@
+$ export PATH=/usr/local/cs/bin:$PATH
+	get the correct version of sort
+
+$ od -t f -N 80000000 < /dev/urandom 
+| sed 's/^[0-9]*\s*//g' 
+| tr -s ' ' '\n' > double.txt
+	Each double-precision floating point is 8 bytes.
+	sed delete the address at the beginnning of each line
+	tr replace consecutive spaces with single newline.
+
+$ wc -l double.txt
+10000000 double.txt
+	check that it has 10000000 lines of double
+
+===============================================================================
+sort time test:
+
+Regular:
+$ time -p sort -g double.txt > /dev/null
+real 36.30
+user 200.40
+sys 0.59
+
+1 thread:
+$ time -p sort -g --parallel=1 double.txt > /dev/null
+real 177.58
+user 177.21
+sys 0.35
+
+2 threads:
+$ time -p sort -g --parallel=2 double.txt > /dev/null
+real 100.46
+user 187.07
+sys 0.42
+
+4 threads:
+$ time -p sort -g --parallel=4 double.txt > /dev/null
+real 56.74
+user 194.94
+sys 0.48
+
+8 threads:
+$ time -p sort -g --parallel=8 double.txt > /dev/null
+real 34.93
+user 194.95
+sys 0.61
+

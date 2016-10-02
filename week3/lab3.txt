@@ -1,0 +1,68 @@
+$ wget ftp://ftp.gnu.org/gnu/coreutils/coreutils-7.6.tar.gz
+download the tgz file
+
+$ tar -xzvf coreutils-7.6.tar.gz
+unzip the tgz file and obtain a coreutils-7.6 directory
+
+$ mkdir ~/coreutilsInstall
+create a directory for the coreutils-7.6 to be installed
+
+$ cd coreutils-7.6/
+go into the directory
+
+$ ./configure --prefix=/u/cs/ugrad/lamk/coreutilsInstall
+specifiy the directory for the coreutils to be installed in
+
+$ make
+compile the files
+
+$ make install
+install the program
+
+$ cd ../coreutilsInstall/
+go into the directory where ls potentially be located in
+
+$ find -name ls
+./bin/ls
+#find ls
+
+$ cd ./bin/
+go to the directory where ls is at
+
+$ ./ls -l
+shows the incorrect data format
+
+$ cd ~/coreutils-7.6/
+go to coreutils-7.6 directory
+
+$ vi patch_file
+copy the patch written by Brady and paste to patch_file
+
+$ patch -p4 < patch_file
+applying patch
+
+$ mkdir ~/NEWcoreutilsInstall
+make another new directory for the patched ls
+
+$ ./configure --prefix=/u/cs/ugrad/lamk/NEWcoreutilsInstall
+$ make
+$ make install
+install the patched ls
+
+$ cd ~/NEWcoreutilsInstall/
+$ ./bin/ls -l
+ls has correct format
+
+$ cd ~
+$ touch -t 199911111111.11 openmplab.txt
+change the time of the file to 1999
+
+$ ./NEWcoreutilsInstall/bin/ls -l
+the file which's time being modified shows the year instead of time.
+
+
+
+
+
+
+
